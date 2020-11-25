@@ -1,0 +1,11 @@
+dist/
+node_modules/
+db/
+bundle/
+platforms/
+bundle.zip
+.env
+keys/
+saved/
+project-lock.json
+/.idea/

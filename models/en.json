@@ -1,0 +1,330 @@
+{
+  "invocation": "craig learning scenes",
+  "intents": [
+    {
+      "name": "PlayIntent",
+      "phrases": [
+        "play {episodeItem}",
+        "stream {episodeItem}",
+        "listen to {episodeItem}",
+        "play",
+        "play something",
+        "play episode",
+        "listen",
+        "listen to something"
+      ],
+      "inputs": [
+        {
+          "name": "episodeItem",
+          "type": "artistNames"
+        }
+      ]
+    },
+    {
+      "name": "ShowListIntent",
+      "phrases": [
+        "show list",
+        "list",
+        "browse",
+        "show me",
+        "list all"
+      ]
+    },
+    {
+      "name": "SayHelloIntent",
+      "phrases": [
+        "hello",
+        "hello their",
+        "whats up",
+        "hey dog"
+      ]
+    }
+  ],
+  "inputTypes": [
+    {
+      "name": "artistNames",
+      "values": [
+        {
+          "key": "item-1",
+          "value": "mormor",
+          "synonyms": [
+            "mormor",
+            "more more",
+            "item one"
+          ]
+        },
+        {
+          "key": "item-2",
+          "value": "loma",
+          "synonyms": [
+            "loma",
+            "low ma",
+            "item two"
+          ]
+        },
+        {
+          "key": "item-3",
+          "value": "weep_wave",
+          "synonyms": [
+            "weep wave",
+            "item three"
+          ]
+        },
+        {
+          "key": "item-4",
+          "value": "beabadoobee",
+          "synonyms": [
+            "beabadoobee",
+            "beaba dobee",
+            "item four"
+          ]
+        },
+        {
+          "key": "item-5",
+          "value": "churchhill_garden",
+          "synonyms": [
+            "the churchhill garden",
+            "churchhill garden",
+            "item five"
+          ]
+        }
+      ]
+    }
+  ],
+  "googleAssistant": {
+    "custom": {
+      "scenes": {
+        "MainLoop": {
+          "intentEvents": [
+            {
+              "intent": "SayHelloIntent",
+              "handler": {
+                "webhookHandler": "Jovo"
+              },
+              "transitionToScene": "MainLoop"
+            },
+            {
+              "intent": "PlayIntent",
+              "handler": {
+                "webhookHandler": "Jovo"
+              },
+              "transitionToScene": "PlayEpisodeScene"
+            },
+            {
+              "intent": "ShowListIntent",
+              "handler": {
+                "webhookHandler": "Jovo"
+              },
+              "transitionToScene": "ListEpisodesScene"
+            }
+          ]
+        },
+        "ListEpisodesScene": {
+          "conditionalEvents": [
+            {
+              "condition": "scene.slots.status == \"FINAL\"",
+              "handler": {
+                "webhookHandler": "Jovo"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "commitBehavior": {
+                "writeSessionParam": "episodeItem"
+              },
+              "name": "episodeItem",
+              "promptSettings": {
+                "initialPrompt": {
+                  "webhookHandler": "Jovo"
+                }
+              },
+              "required": true,
+              "type": {
+                "name": "episodeItem"
+              }
+            }
+          ]
+        },
+        "PlayEpisodeScene": {
+          "conditionalEvents": [
+            {
+              "condition": "scene.slots.status == \"FINAL\"",
+              "handler": {
+                "webhookHandler": "Jovo"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "commitBehavior": {
+                "writeSessionParam": "episodeItem"
+              },
+              "name": "episodeItem",
+              "promptSettings": {
+                "initialPrompt": {
+                  "webhookHandler": "Jovo"
+                }
+              },
+              "required": true,
+              "type": {
+                "name": "artistNames"
+              }
+            }
+          ]
+        }
+      },
+      "global": {
+        "actions.intent.MAIN": {
+          "handler": {
+            "webhookHandler": "Jovo"
+          },
+          "transitionToScene": "MainLoop"
+        },
+        "actions.intent.MEDIA_STATUS_FINISHED": {
+          "handler": {
+            "webhookHandler": "Jovo"
+          }
+        },
+        "actions.intent.MEDIA_STATUS_PAUSED": {
+          "handler": {
+            "webhookHandler": "Jovo"
+          }
+        },
+        "actions.intent.MEDIA_STATUS_STOPPED": {
+          "handler": {
+            "webhookHandler": "Jovo"
+          }
+        },
+        "actions.intent.MEDIA_STATUS_FAILED": {
+          "handler": {
+            "webhookHandler": "Jovo"
+          }
+        },
+
+        "actions.intent.NO_INPUT_1": {
+          "handler": {
+            "staticPrompt": {
+              "candidates": [
+                {
+                  "promptResponse": {
+                    "firstSimple": {
+                      "variants": [
+                        {
+                          "speech": "Sorry, I didn't catch that. Can you try again?",
+                          "text": "Sorry, I didn't catch that. Can you try again?"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "actions.intent.NO_INPUT_2": {
+          "handler": {
+            "staticPrompt": {
+              "candidates": [
+                {
+                  "promptResponse": {
+                    "firstSimple": {
+                      "variants": [
+                        {
+                          "speech": "Sorry, I didn't catch that. Can you try again?",
+                          "text": "Sorry, I didn't catch that. Can you try again?"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "actions.intent.NO_INPUT_FINAL": {
+          "handler": {
+            "staticPrompt": {
+              "candidates": [
+                {
+                  "promptResponse": {
+                    "firstSimple": {
+                      "variants": [
+                        {
+                          "speech": "Sorry, I still didn't catch that. The app will now quit. Please try the app again.",
+                          "text": "Sorry, I still didn't catch that. The app will now quit. Please try the app again."
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "transitionToScene": "actions.scene.END_CONVERSATION"
+        },
+        "actions.intent.NO_MATCH_1": {
+          "handler": {
+            "staticPrompt": {
+              "candidates": [
+                {
+                  "promptResponse": {
+                    "firstSimple": {
+                      "variants": [
+                        {
+                          "speech": "Sorry, I didn't catch that. Can you try again?",
+                          "text": "Sorry, I didn't catch that. Can you try again?"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "actions.intent.NO_MATCH_2": {
+          "handler": {
+            "staticPrompt": {
+              "candidates": [
+                {
+                  "promptResponse": {
+                    "firstSimple": {
+                      "variants": [
+                        {
+                          "speech": "Sorry, I didn't catch that. Can you try again?",
+                          "text": "Sorry, I didn't catch that. Can you try again?"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "actions.intent.NO_MATCH_FINAL": {
+          "handler": {
+            "staticPrompt": {
+              "candidates": [
+                {
+                  "promptResponse": {
+                    "firstSimple": {
+                      "variants": [
+                        {
+                          "speech": "Sorry, I still didn't catch that. The app will now quit. Please try the app again.",
+                          "text": "Sorry, I still didn't catch that. The app will now quit. Please try the app again."
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "transitionToScene": "actions.scene.END_CONVERSATION"
+        }
+      }
+    }
+  }
+}
