@@ -8,3 +8,5 @@ This application was used to learn the following:
 * How to build/display a list
 * How to playback media files and respond to playback events.
 
+To run (this assumes you already have jovo installed) :
+* 

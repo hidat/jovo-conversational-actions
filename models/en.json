@@ -211,8 +211,8 @@
                     "firstSimple": {
                       "variants": [
                         {
-                          "speech": "Sorry, I didn't catch that. Can you try again?",
-                          "text": "Sorry, I didn't catch that. Can you try again?"
+                          "speech": "No Input 1. Try again?",
+                          "text": "No Input 1. Try again!"
                         }
                       ]
                     }
@@ -231,8 +231,8 @@
                     "firstSimple": {
                       "variants": [
                         {
-                          "speech": "Sorry, I didn't catch that. Can you try again?",
-                          "text": "Sorry, I didn't catch that. Can you try again?"
+                          "speech": "No input 2. Speak Up!",
+                          "text": "No input 2. Speak Up!"
                         }
                       ]
                     }
@@ -251,8 +251,8 @@
                     "firstSimple": {
                       "variants": [
                         {
-                          "speech": "Sorry, I still didn't catch that. The app will now quit. Please try the app again.",
-                          "text": "Sorry, I still didn't catch that. The app will now quit. Please try the app again."
+                          "speech": "No Input Final.  I give up!",
+                          "text": "No Input Final.  I give up!"
                         }
                       ]
                     }
@@ -272,8 +272,8 @@
                     "firstSimple": {
                       "variants": [
                         {
-                          "speech": "Sorry, I didn't catch that. Can you try again?",
-                          "text": "Sorry, I didn't catch that. Can you try again?"
+                          "speech": "No match 1.  Try again?",
+                          "text": "No match 1.  Try again?"
                         }
                       ]
                     }
@@ -292,8 +292,8 @@
                     "firstSimple": {
                       "variants": [
                         {
-                          "speech": "Sorry, I didn't catch that. Can you try again?",
-                          "text": "Sorry, I didn't catch that. Can you try again?"
+                          "speech": "No match 2.  What you talking about?",
+                          "text": "No match 2.  What you talking about?"
                         }
                       ]
                     }
@@ -312,8 +312,8 @@
                     "firstSimple": {
                       "variants": [
                         {
-                          "speech": "Sorry, I still didn't catch that. The app will now quit. Please try the app again.",
-                          "text": "Sorry, I still didn't catch that. The app will now quit. Please try the app again."
+                          "speech": "No match final.  I give up!",
+                          "text": "No match final.  I give up!"
                         }
                       ]
                     }
