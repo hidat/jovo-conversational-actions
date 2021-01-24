@@ -156,7 +156,7 @@ app.setHandler({
 
     Unhandled() {
         console.log('Unhandled.')
-        this.ask("I didn't understand that, please try again.");
+        this.ask("Unhandled, please try again.");
     },
 
     ON_ERROR() {

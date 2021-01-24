@@ -204,22 +204,7 @@
 
         "actions.intent.NO_INPUT_1": {
           "handler": {
-            "staticPrompt": {
-              "candidates": [
-                {
-                  "promptResponse": {
-                    "firstSimple": {
-                      "variants": [
-                        {
-                          "speech": "No Input 1. Try again?",
-                          "text": "No Input 1. Try again!"
-                        }
-                      ]
-                    }
-                  }
-                }
-              ]
-            }
+            "webhookHandler": "Jovo"
           }
         },
         "actions.intent.NO_INPUT_2": {
@@ -265,22 +250,7 @@
         },
         "actions.intent.NO_MATCH_1": {
           "handler": {
-            "staticPrompt": {
-              "candidates": [
-                {
-                  "promptResponse": {
-                    "firstSimple": {
-                      "variants": [
-                        {
-                          "speech": "No match 1.  Try again?",
-                          "text": "No match 1.  Try again?"
-                        }
-                      ]
-                    }
-                  }
-                }
-              ]
-            }
+            "webhookHandler": "Jovo"
           }
         },
         "actions.intent.NO_MATCH_2": {
